@@ -1,12 +1,12 @@
 package modelo;
 
+import java.util.Scanner;
+
 public class Titulo {
-    private String nombre;
-    private int fechaDeLanzamiento;
+    private String nombre, sinopsis;
+    private int fechaDeLanzamiento, tiempoDeDuracionEnMinutos;
     private double evaluacion;
     private boolean incluidoEnElPlanBasico;
-    private String sinopsis;
-    private int tiempoDeDuracionEnMinutos;
 
     public String getNombre() {
         return nombre;
@@ -54,9 +54,24 @@ public class Titulo {
 
     // Para nombrar los metodos se usa el verbo en infinitivo o imperativo, actualmente en el mercado domina como imperativo
     public void muestraFichaTecnica() {
-        System.out.println("****FICHA TÉCNICA****");
-        System.out.println("Nombre del título: " + nombre);
-        System.out.println("Fecha de Lanzamiento: " + fechaDeLanzamiento);
+        System.out.println("\n****FICHA TÉCNICA****");
+        System.out.println("Nombre del título: " + getNombre());
+        System.out.println("Fecha de Lanzamiento: " + getFechaDeLanzamiento());
         System.out.println("Tiempo de duración: " + getTiempoDeDuracionEnMinutos() + " minutos");
+        System.out.println("Sinopsis: " + getSinopsis());
+    }
+
+    public void solicitaDatos(Titulo titulo) {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("Ingrese el nombre");
+        setNombre(teclado.nextLine());
+
+        System.out.println("Ingrese el año de lanzamiento");
+        setFechaDeLanzamiento(teclado.nextInt());
+        teclado.nextLine();
+
+        System.out.println("Ingrese una sinopsis");
+        setSinopsis(teclado.nextLine());
     }
 }
